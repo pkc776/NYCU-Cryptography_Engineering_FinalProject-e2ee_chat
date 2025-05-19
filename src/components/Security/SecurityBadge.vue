@@ -1,0 +1,1 @@
+<template><span class="text-green-700 text-xs">🔒 Secure</span></template>
