@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # NYCU Crypto Engineering Final Project
     This is a repo for NYCU-Cryptography_Engineering_FinalProject-e2ee_chat final project.
 
@@ -28,6 +28,8 @@ npm run dev           # http://localhost:5173
 * *(預留)* `GET /cert/:user`
 
 # Structure
+
+```bash
 FRONTEND_VER1/
 ├─ package.json               ← 前端依賴與 script (vite dev / build)
 ├─ vite.config.js             ← dev-server 設定 (port 5173, proxy 到 :3000)
@@ -73,6 +75,4 @@ FRONTEND_VER1/
        ├─ LoginView.vue
        ├─ RegisterView.vue
        └─ HomeView.vue          ← 聊天主畫面 (UserList + ChatWindow)
-=======
-
->>>>>>> d729785c48976169ef60716c6d508eb5ac4c4373
+```
