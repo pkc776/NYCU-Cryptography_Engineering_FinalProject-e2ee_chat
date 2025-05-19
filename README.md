@@ -1,3 +1,6 @@
+<<<<<<< HEAD
+# NYCU Crypto Engineering Final Project
+    This is a repo for NYCU-Cryptography_Engineering_FinalProject-e2ee_chat final project.
 
 # FRONTEND_VER1
 
@@ -70,3 +73,6 @@ FRONTEND_VER1/
        ├─ LoginView.vue
        ├─ RegisterView.vue
        └─ HomeView.vue          ← 聊天主畫面 (UserList + ChatWindow)
+=======
+
+>>>>>>> d729785c48976169ef60716c6d508eb5ac4c4373
