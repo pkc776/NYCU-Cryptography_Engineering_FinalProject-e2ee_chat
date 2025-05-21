@@ -18,6 +18,7 @@ const { sendMessage, getMessages } = require('../controllers/messageController')
  *               - from
  *               - to
  *               - content
+ *               - iv
  *             properties:
  *               from:
  *                 type: string
@@ -28,6 +29,9 @@ const { sendMessage, getMessages } = require('../controllers/messageController')
  *               content:
  *                 type: string
  *                 description: Encrypted message (base64)
+ *               iv:
+ *                 type: string
+ *                 description: Initialization vector (base64)
  *     responses:
  *       201:
  *         description: Message successfully sent
@@ -41,7 +45,7 @@ const { sendMessage, getMessages } = require('../controllers/messageController')
  *       400:
  *         description: Missing required fields
  */
-router.post('/message', sendMessage);
+router.post('/', sendMessage);
 /**
  * @swagger
  * /message/{to}:
@@ -72,12 +76,14 @@ router.post('/message', sendMessage);
  *                     type: string
  *                   content:
  *                     type: string
+ *                   iv:
+ *                     type: string
  *                   timestamp:
  *                     type: integer
  *                     format: int64
  */
 
-router.get('/message/:to', getMessages);
+router.get('/:to', getMessages);
 
 
 module.exports = router;

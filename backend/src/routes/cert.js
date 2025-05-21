@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { getCert } = require('../controllers/certController');
+const { getCert, getCAPublicKey } = require('../controllers/certController');
 
 /**
  * @swagger
@@ -31,5 +31,6 @@ const { getCert } = require('../controllers/certController');
  *         description: Certificate not found
  */
 router.get('/cert/:userID', getCert);
+router.get('/ca', getCAPublicKey);
 
 module.exports = router;

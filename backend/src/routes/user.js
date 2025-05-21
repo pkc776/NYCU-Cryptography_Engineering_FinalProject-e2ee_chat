@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { register, getUsers } = require('../controllers/userController');
+const { register, login, getUsers } = require('../controllers/userController');
 const { getUser } = require('../storage/users');
 /**
  * @swagger
@@ -26,30 +26,6 @@ const { getUser } = require('../storage/users');
  *         description: Missing fields
  */
 router.post('/register', register);
-
-
-/**
- * @swagger
- * /users:
- *   get:
- *     summary: Get all registered users
- *     tags: [User]
- *     responses:
- *       200:
- *         description: List of users
- *         content:
- *           application/json:
- *             schema:
- *               type: array
- *               items:
- *                 type: object
- *                 properties:
- *                   username:
- *                     type: string
- *                   publicKey:
- *                     type: string
- */
-router.get('/users', getUsers);
 
 /**
  * @swagger
@@ -91,20 +67,29 @@ router.get('/users', getUsers);
  *       404:
  *         description: User not found
  */
-router.post('/login', (req, res) => {
-  const { username } = req.body;
+router.post('/login', login);
 
-  if (!username) {
-    return res.status(400).json({ error: 'Missing username' });
-  }
-
-  const user = getUser(username);
-  if (!user) {
-    return res.status(404).json({ error: 'User not found' });
-  }
-
-  return res.status(200).json({ message: 'Login successful', user: { username } });
-});
-
+/**
+ * @swagger
+ * /users:
+ *   get:
+ *     summary: Get all registered users
+ *     tags: [User]
+ *     responses:
+ *       200:
+ *         description: List of users
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   username:
+ *                     type: string
+ *                   publicKey:
+ *                     type: string
+ */
+router.get('/users', getUsers);
 
 module.exports = router;

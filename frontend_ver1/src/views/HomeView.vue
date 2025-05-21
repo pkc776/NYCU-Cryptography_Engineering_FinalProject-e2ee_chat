@@ -15,11 +15,32 @@
 </div>
 </template>
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 import { useAuthStore } from '../stores/auth';
 import UserList from '../components/Chat/UserList.vue';
 import ChatWindow from '../components/Chat/ChatWindow.vue';
 import SecurityBadge from '../components/Security/SecurityBadge.vue';
+
 const active = ref(null);
 const auth = useAuthStore();
+let refreshInterval;
+
+// 定期刷新用戶列表
+async function refreshUsers() {
+  await auth.loadUsers();
+}
+
+onMounted(() => {
+  // 初始載入
+  refreshUsers();
+  // 每5秒刷新一次
+  refreshInterval = setInterval(refreshUsers, 5000);
+});
+
+onUnmounted(() => {
+  // 清除定時器
+  if (refreshInterval) {
+    clearInterval(refreshInterval);
+  }
+});
 </script>
